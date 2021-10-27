@@ -14,7 +14,7 @@ echo '🏗️👷 Styling, testing and type-checking project before committing'
 # Check stylelint
 pnpm check-stylelint ||
 (
-  echo '😤🏀👋😤 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+  echo '☀️🧖‍♀️👗💄 StyleLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
   false;
 )
 

@@ -6,7 +6,7 @@
     "pnpm": ">=6.19.1"
   },
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "preinstall": "npx only-allow pnpm",
