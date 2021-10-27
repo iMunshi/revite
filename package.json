@@ -15,7 +15,7 @@
     "check-types": "tsc --pretty --noEmit --incremental",
     "check-all": "pnpm format && pnpm check-format && pnpm check-lint && pnpm check-types",
     "format": "prettier --write .",
-    "prepare": "cd .. && husky install ./.husky",
+    "prepare": "husky install",
     "pre-commit": "lint-staged"
   },
   "dependencies": {

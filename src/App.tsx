@@ -1,11 +1,11 @@
-import { useState } from 'react';
-
-function App() {
-  const [count, setCount] = useState(0);
-
+/**
+ * App component
+ * @return {JSX.Element} JSX.Element
+ */
+function App(): JSX.Element {
   return (
     <div>
-      <h1 className='text-center'>hello world</h1>
+      <h1 className="text-center">hello world</h1>
     </div>
   );
 }
