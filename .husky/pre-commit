@@ -4,7 +4,7 @@
 # ... lint-staged
 pnpm pre-commit ||
 (
-  echo '😤🏀👋😤 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.';
+  echo '😤🏀👋😤 Linting and Formatting Check Failed. Make the required changes listed above, add changes and try to commit again.';
   false;
 )
 

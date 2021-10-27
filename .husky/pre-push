@@ -2,45 +2,111 @@
 . "$(dirname "$0")/_/husky.sh"
 
 
+# lint
+#   - if pushing changes to .js|jsx|ts|tsx files: run eslint and prettier
+#   - if pushing changes to .css|scss files: run stylelint
+
 echo '🏗️👷 Styling, testing and type-checking project before committing'
 
-# Check Prettier standards
-# pnpm check-format ||
-# (
-#   echo '💄💄💄💄 Prettier Check Failed. \n\nRun: yarn format \n\nadd changes and try commit again.';
-#   false;
-# )
+set -e
 
-# Check stylelint
-pnpm check-stylelint ||
-(
-  echo '☀️🧖‍♀️👗💄 StyleLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
-  false;
-)
+remote="$1"
+url="$2"
+z40=0000000000000000000000000000000000000000
 
-# Check ESLint Standards
-pnpm check-eslint ||
-(
-  echo '😤🏀👋😤 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
-  false;
-)
+while read local_ref local_sha remote_ref remote_sha
+do
+  if [ "$local_sha" = $z40 ]; then
+    # branch deleted
+    :
+  else
+    if [ "$remote_sha" = $z40 ]; then
+      codelint=1
+      stylelint=1
+    else
+      range="$remote_sha..$local_sha"
+      files=`git diff --name-only $range`
 
-# Check tsconfig standards
-pnpm check-types ||
-(
-  echo '🤡😂❌🤡 Failed Type check. Make the changes required above.'
-  false;
-)
+      [ -n "`echo $files | grep \.(js|jsx|ts|tsx)$`" ] && codelint=1
+      [ -n "`echo $files | grep \.(css|scss)$`" ] && stylelint=1
+    fi
 
-# If everything passes... Now we can commit
-# echo '🤔🤔🤔🤔... Alright... Code looks good... Trying to Build now.#🤔🤔🤔🤔'
+    if [[ $codelint -eq 1 ]]; then
+      # Check ESLint Standards
+      pnpm check-eslint ||
+      (
+        echo '😤🏀👋😤 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        false;
+      )
 
-# build project if needed
-# pnpm build ||
-# (
-#    echo '❌👷🔨❌ Build failed: View the errors above to see why.'
-#    false;
-# )
+      # Check tsconfig standards
+      pnpm check-types ||
+      (
+        echo '🤡😂❌🤡 Failed Type check. Make the changes required above.'
+        false;
+      )
+    else
+      echo '🚴‍♂️ No need to check eslint and tsconfigs.'
+    fi
+
+    if [[ $stylelint -eq 1 ]]; then
+      # Check stylelint
+      pnpm check-stylelint ||
+      (
+        echo '☀️🧖‍♀️👗💄 StyleLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        false;
+      )
+    else
+      echo '🚴🚴‍♀️ No need to check stylelint.'
+    fi
+  fi
+done
 
 # If everything passes... Now we can push
 echo '✅✅✅✅ All checks passed. Pushing this now. ✅✅✅✅'
+
+exit 0
+
+
+# echo '🏗️👷 Styling, testing and type-checking project before committing'
+
+# # Check Prettier standards
+# # pnpm check-format ||
+# # (
+# #   echo '💄💄💄💄 Prettier Check Failed. \n\nRun: yarn format \n\nadd changes and try commit again.';
+# #   false;
+# # )
+
+# # Check stylelint
+# pnpm check-stylelint ||
+# (
+#   echo '☀️🧖‍♀️👗💄 StyleLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+#   false;
+# )
+
+# # Check ESLint Standards
+# pnpm check-eslint ||
+# (
+#   echo '😤🏀👋😤 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+#   false;
+# )
+
+# # Check tsconfig standards
+# pnpm check-types ||
+# (
+#   echo '🤡😂❌🤡 Failed Type check. Make the changes required above.'
+#   false;
+# )
+
+# # If everything passes... Now we can commit
+# # echo '🤔🤔🤔🤔... Alright... Code looks good... Trying to Build now.#🤔🤔🤔🤔'
+
+# # build project if needed
+# # pnpm build ||
+# # (
+# #    echo '❌👷🔨❌ Build failed: View the errors above to see why.'
+# #    false;
+# # )
+
+# # If everything passes... Now we can push
+# echo '✅✅✅✅ All checks passed. Pushing this now. ✅✅✅✅'
