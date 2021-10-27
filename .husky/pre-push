@@ -1,0 +1,41 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+
+echo '🏗️👷 Styling, testing and type-checking project before committing'
+
+# Check Prettier standards
+# pnpm check-format ||
+# (
+#   echo '💄💄💄💄 Prettier Check Failed. \n\nRun: yarn format \n\nadd changes and try commit again.';
+#   false;
+# )
+
+# TODO: add stylelint
+
+# Check ESLint Standards
+pnpm check-lint ||
+(
+  echo '😤🏀👋😤 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+  false;
+)
+
+# Check tsconfig standards
+pnpm check-types ||
+(
+  echo '🤡😂❌🤡 Failed Type check. Make the changes required above.'
+  false;
+)
+
+# If everything passes... Now we can commit
+# echo '🤔🤔🤔🤔... Alright... Code looks good... Trying to Build now.#🤔🤔🤔🤔'
+
+# build project if needed
+# pnpm build ||
+# (
+#    echo '❌👷🔨❌ Build failed: View the errors above to see why.'
+#    false;
+# )
+
+# If everything passes... Now we can push
+echo '✅✅✅✅ All checks passed. Pushing this now. ✅✅✅✅'

@@ -1,11 +1,22 @@
 {
   "name": "revite",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=14.18.1",
+    "pnpm": ">=6.19.1"
+  },
   "scripts": {
     "dev": "vite --open",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js --cache",
+    "check-types": "tsc --pretty --noEmit --incremental",
+    "check-all": "pnpm format && pnpm check-format && pnpm check-lint && pnpm check-types",
+    "format": "prettier --write .",
+    "prepare": "cd .. && husky install ./.husky",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
     "react": "^17.0.0",
@@ -14,9 +25,18 @@
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
     "@vitejs/plugin-react": "^1.0.0",
     "autoprefixer": "^10.3.7",
+    "eslint": "^8.1.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.26.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "postcss": "^8.3.11",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.2.17",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"

@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# ... lint-staged
+pnpm pre-commit ||
+(
+  echo '😤🏀👋😤 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.';
+  false;
+)
+
+echo '💯 All checks passed. Commiting this now. 👍'
