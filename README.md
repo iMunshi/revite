@@ -6,6 +6,7 @@ A react app using vite
 
 - [x] Vite
 - [x] pnpm
+- [x] mkcert ssl
 - [x] Typescript
 - [x] Tailwind CSS
 - [x] ESLint
