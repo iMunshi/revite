@@ -27,8 +27,8 @@ do
       range="$remote_sha..$local_sha"
       files=`git diff --name-only $range`
 
-      [ -n "`echo $files | grep \.(js|jsx|ts|tsx)$`" ] && codelint=1
-      [ -n "`echo $files | grep \.(css|scss)$`" ] && stylelint=1
+      [ -n "`echo $files | grep '\.(js|jsx|ts|tsx)$'`" ] && codelint=1
+      [ -n "`echo $files | grep '\.(css|scss)$'`" ] && stylelint=1
     fi
 
     if [[ $codelint -eq 1 ]]; then
