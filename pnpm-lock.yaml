@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@types/react': ^17.0.0
-  '@types/react-dom': ^17.0.0
+  '@types/react': ^17.0.33
+  '@types/react-dom': ^17.0.10
   '@typescript-eslint/eslint-plugin': ^5.2.0
   '@typescript-eslint/parser': ^5.2.0
-  '@vitejs/plugin-react': ^1.0.0
+  '@vitejs/plugin-react': ^1.0.6
   autoprefixer: ^10.3.7
   eslint: ^8.1.0
   eslint-config-google: ^0.14.0
@@ -15,13 +15,13 @@ specifiers:
   lint-staged: ^11.2.6
   postcss: ^8.3.11
   prettier: ^2.4.1
-  react: ^17.0.0
-  react-dom: ^17.0.0
+  react: ^17.0.2
+  react-dom: ^17.0.2
   stylelint: ^14.0.1
   stylelint-config-standard: ^23.0.0
   tailwindcss: ^2.2.17
-  typescript: ^4.3.2
-  vite: ^2.6.4
+  typescript: ^4.4.4
+  vite: ^2.6.13
 
 dependencies:
   react: 17.0.2
@@ -46,7 +46,7 @@ devDependencies:
   stylelint-config-standard: 23.0.0_stylelint@14.0.1
   tailwindcss: 2.2.17_fa866e6aa6eb85ed70431566fb699b34
   typescript: 4.4.4
-  vite: 2.6.11
+  vite: 2.6.13
 
 packages:
 
@@ -746,7 +746,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001271
-      electron-to-chromium: 1.3.879
+      electron-to-chromium: 1.3.880
       escalade: 3.1.1
       node-releases: 2.0.1
       picocolors: 1.0.0
@@ -1044,8 +1044,8 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /electron-to-chromium/1.3.879:
-    resolution: {integrity: sha512-zJo+D9GwbJvM31IdFmwcGvychhk4KKbKYo2GWlsn+C/dxz2NwmbhGJjWwTfFSF2+eFH7VvfA8MCZ8SOqTrlnpw==}
+  /electron-to-chromium/1.3.880:
+    resolution: {integrity: sha512-iwIP/6WoeSimzUKJIQtjtpVDsK8Ir8qQCMXsUBwg+rxJR2Uh3wTNSbxoYRfs+3UWx/9MAnPIxVZCyWkm8MT0uw==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -3252,8 +3252,8 @@ packages:
       spdx-expression-parse: 3.0.1
     dev: true
 
-  /vite/2.6.11:
-    resolution: {integrity: sha512-JWnGmiO1IFwou9aUWS4N0kMyHcgTTt1+2f4bJyzgBJLJDyAqGEX3HewE4jgrL6V4d9+mxs+lZ4L8HL2kyVBe7A==}
+  /vite/2.6.13:
+    resolution: {integrity: sha512-+tGZ1OxozRirTudl4M3N3UTNJOlxdVo/qBl2IlDEy/ZpTFcskp+k5ncNjayR3bRYTCbqSOFz2JWGN1UmuDMScA==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
