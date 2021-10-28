@@ -14,3 +14,7 @@ A react app using vite
 - [x] Prettier
 - [x] Husky
 - [x] lint-staged
+- [ ] cross-platform scripts eg. rimraf
+- [ ] redux toolkit
+- [ ] redux toolkit query
+- [ ] react-router
