@@ -5,7 +5,9 @@
 export default function Counter(): JSX.Element {
   return (
     <div>
-      <label>Count 0</label>
+      <label className="bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+        Count 0
+      </label>
       <button>add</button>
       <button>minus</button>
     </div>
